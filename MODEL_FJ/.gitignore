@@ -1,3 +1,4 @@
+BIN
 POOL/*
 !POOL/boundaries
 !POOL/gui
@@ -6,3 +7,5 @@ POOL/*
 !POOL/*.mdu
 !POOL/*.md
 !POOL/*.bat
+!POOL/*.ini
+!POOL/fort.*
