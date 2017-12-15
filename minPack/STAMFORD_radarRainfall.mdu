@@ -1,0 +1,116 @@
+# Generated on 16:01:35, 27-02-2014
+# Deltares, 3Di - subgrid Version 0.1.1.1254, Feb 25 2014, 20:37:59
+
+[model]
+AutoStart                  = 0                   # 0: NoAutoStart, 1: AutoStart, 2: AutoStartStop
+FileFormatVersion          = 2.09999990463257    # File format version. Do not edit this.
+
+[geometry]
+BathymetryFile             = subgrid/FinalDEM2D_2.tif    # *.binary or *.asc file with pixel data
+DikeFile                  = polygons/Stamford3Di_network_v4_2.pol# *.pol file with dike data
+#MaxInterception           = 0.                  # Default constant thickness of interception layer (m)
+MaxInterceptionFile        = subgrid/intception_45_5.asc # Pixel level *asc file with interception layer thickness (m)
+NetworkFile                =                     # 1d Channel network file
+CrossSectionFile           =                                                                                                                                                                                                                                                                 
+CrossSectionDefinitionFile =                                                                                                                                                                                                                                                                 
+StructureFile              =                     # Structure file
+LeveeFile                  =                     # Levee file
+
+[grid]
+GridAdminFile              =                     # *.grd file
+TableDataFile              = l                    # *.tbl file
+GridSpace                  = 20.                 # Min grid size (m)
+kmax                       = 4                   # Max refinement level
+BathDelta                  = 0.5.                  # Refinement threshold (max bath difference)
+BathMax                    = 15                # Max sensible bathymetry level (m)
+GuessDams                  = 0                   # 1: use bath info to find dams, 0: ignore bath info
+
+[initialization]
+WaterLevelIni              = -0.18629            # Initial water level (m)
+WaterLevelIniFile          =                     # initial water level file
+WaterLevelIniType          = 0                   # 0: max, 1: avg
+InterceptionIniFile        =                     # Initial interception file
+InterceptionIniType        = 2                   # Initial interception type: 0-average, 1-max
+FloodIniFile               =                     # Flood fill file name
+RestartFile                =                     # *.nc restart file used to start the simulation.
+
+[defaults]
+FloodWaterLevel            = 1.                  # Flood fill water level (m)
+FloodLevelAbsolute         = 1                   # 1/0: absolute/relative flood water level
+BathymetryIncrement        = -0.5                # Increment for bathymetry lifting (m)
+BathIncAbsolute            = 0                   # 1/0 : absolute/relative bathymetry lifting
+InfiltrationRateNew        = 5.                  # Infiltration rate (mm/day) for interactive changing
+RainfallCloudAmount        = 5.d-2               # Rainfall amount (m) in interactive cloud rain
+RainfallCloudDiameter      = 1000.               # Rainfall cloud diameter (m) in interactive cloud rain
+
+[numerics]
+IntegrationMethod          = 0                   # Time integration method: 0=Euler implicit, 1=Carlson implicit, 2=Silecki explicit.
+MaxNonlinIterations        = 20                  # Maximum number of nonlinear iterations in single time step.
+NumPredCor                 = 1                   # Number of 'predictor-corrector'-steps in single time step (npc).
+ConvergenceEps             = 1.d-5               # Minimal residual for convergence of water level solver.
+FloodingThreshold          = 1.d-2               # Flooding threshold (m)
+OpenLinkCheck              = 0                   # 0: lowest bath point, 1: wet path
+Advection                  = 0                   # 1/0 Advection on/off
+PricemanSlot               = 0                   # 1/0 Priceman slots on/off
+
+[physics]
+FrictType                  = 4                   # 1: Chezy, 4: Manning
+FrictCoefFile              = subgrid/manning55_35donw.asc# *.asc file with space varying friction coefficient
+#FrictCoef                  = 2.6d-2              # Constant friction coefficient
+
+[hydrology]
+InfiltrationRateFile       =                     # Pixel level *asc file with infiltration rates (mm/day)
+NumLayers                  = 0
+
+[time]
+Dt                         = 4.                  # Surface flow timestep (s)
+StartTime                  = 06:00:00            # Initial time (hh:mm:ss)
+StartDate                  = 2011-12-23          # Reference date (yyyy-mm-dd)
+NTimesteps                 = 5250                # Number of timesteps
+
+[external forcing]
+ExtForceFile               = boundaries/boundary_v6.ext     # *.ext
+ManholeFile                =                     # *.dat file with manholes
+ConstantRainAmount         = 0.                  # Constant rainfall amount (mm/day)
+RainfallFile               =                     # Rainfall timeseries file name
+Evaporation                = 0                   # 1/0 Evaporation on/off
+
+[output]
+HisOutput1Dpoints          = 1                   # 1/0: include all 1D grid points in his file as well.
+MapInterval                = 60.                 # Interval (s) between successive snapshots in map file.
+HisInterval                = 60.                 # Interval (s) for timeseries in his file.
+RstInterval                = 0.                  # Interval (s) between writing *.nc restart files.
+#ObsFile                    = Obs_stationsStamford_v3.xyn              # *.xyn file with coordinates+name of observation stations.
+CrsFile                    = polygons/OutflowStamfCanal.pol   # *.pol file with crossections.
+
+[display]
+RedrawEvery                = 3                   # Plot every RedrawEvery timesteps
+SaveHardCopy               = 0                   # 1/0: save/don't save hard copy
+showGrid                   = 0                   # 1/0: show/don't show grid
+showLinks                  = 0                   # 1/0: show/dont't show open flow links
+ShowNodNumbers             = 0                   # 1/0: show/dont't show node/link numbers
+Show1DNetwork              = 0                   # 1/0: show/dont't show 1D network
+ShowStructures             = 0                   # Display structures in GUI. 0: no, 1: icon, 2: icon+label.
+ShowNetworkCRS             = 0                   # Display network cross sections in GUI. 0: no, 1: icon, 2: icon+label.
+Show1DNodNum               = 0                   # 1/0: show/dont't show 1D node/link numbers
+showInterception           = 0                   # 0: Do not show, 1: Show intercepted water.
+ShowUZslice                = 0                   # 0: do not show, 1: show UZ in side view
+sliceUZcolor               = 0                   # 0: single color, 1: moisture content dependent
+showChanSelect             = 
+showChanMinY               = 0.
+showChanMaxY               = 0.
+
+[colors]
+LandColorMapFile           = gui/land.rgb            # *.rgb or *.zrgb land color map file
+LandColorType              = 0                   # 0: spec. min/max height, 1: auto, 2: absolute from zrgb-file
+cmax                       = 45.6591987609863    # Maximum colored bathymetry value (m)
+cmin                       = -2.85542011260986   # Minimum colored bathymetry value (m)
+WaterColorMapFile          = gui/water.rgb           # Water color map file
+WaterColorType             = 0                   # 0: spec. max depth, 1: auto
+hmax                       = 2.                  # Maximum colored water depth (m)
+hmin                       = 0.                  # Minimum plotted water depth (m)
+InterceptionColorMapFile   =                     # Intercepted water color map file
+simax                      = 0.5                 # Maximum colored intercepted water depth (m)
+simin                      = 0.                  # Minimum plotted intercepted water depth (m)
+gwmax                      = 6.98999977111816    # Maximum colored ground water level (m)
+gwmin                      = 0.                  # Minimum colored ground water level (m)
