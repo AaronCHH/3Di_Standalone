@@ -5,3 +5,4 @@ POOL/*
 !POOL/raster
 !POOL/*.mdu
 !POOL/*.md
+!POOL/*.bat
