@@ -1,0 +1,11 @@
+BIN
+POOL/*
+!POOL/boundaries
+!POOL/gui
+!POOL/layout
+!POOL/raster
+!POOL/*.mdu
+!POOL/*.md
+!POOL/*.bat
+!POOL/*.ini
+!POOL/fort.*
